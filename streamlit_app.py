@@ -1,4 +1,5 @@
 import pandas
+import requests
 import streamlit
 
 streamlit.title('My Mom\'s New Healthy Diner')
@@ -20,3 +21,8 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 
 # Display the table on the the page
 streamlit.dataframe(fruits_to_show)
+
+# New Section to display fruityvice API response
+streamlit.header("Fruitlyvice Fruit Advice!")
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+streamlit.text(fruityvice_response.json())
